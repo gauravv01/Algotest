@@ -1,0 +1,6 @@
+.all_legs{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}

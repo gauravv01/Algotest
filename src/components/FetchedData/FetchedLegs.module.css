@@ -1,0 +1,19 @@
+.list{
+    /* list-style: none; */
+}
+
+.table{
+   border: 1px solid gray; 
+   align-items: center;
+   text-align: left;
+   margin-bottom: 1.5rem;
+   color: rgb(76, 82, 93);
+}
+
+/* .table tr{
+    border: 1px solid gray;
+} */
+
+.table tr td{
+    border: 1px solid gray;
+}

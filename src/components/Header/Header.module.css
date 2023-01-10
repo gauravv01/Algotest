@@ -1,0 +1,67 @@
+.heading{
+    display: inline-flex;
+    align-items: center;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 0.75rem;
+    line-height: 0.8rem;
+    text-align: center;
+    color: #3f3f3f;
+    margin-right: 0.5rem;
+}
+
+.trading_options{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.trading_options input{
+    color: black;
+    display: none;
+}
+
+.trading_options label:nth-of-type(1){
+    border-radius: 16px 0 0 16px;
+}
+.trading_options label:nth-of-type(2){
+    border-radius: 0 16px 16px 0;
+}
+
+
+.options:checked+label{
+    background-color: #375a9e;
+    border-color: #375a9e;
+    color: #fff!important
+}
+.alter{
+    background-color: #375a9e;
+    border-color: #375a9e;
+    color: #fff!important
+}
+
+
+.label{
+    color: #3f3f3f!important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 4.4rem;
+    height: 1.5rem;
+    background: #fff;
+    border: 1px solid #f6f6f6;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 0.75rem;
+    line-height: 1rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all .2s ease;
+}
+
+.toggle_left{
+    border-radius: 16px 0 0 16px;
+}
+.toggle_right{
+    border-radius: 0 16px 16px 0;
+}

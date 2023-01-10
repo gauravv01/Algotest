@@ -1,0 +1,209 @@
+/* *{
+    box-sizing: border-box;
+  } */
+  
+.leg_item{
+    /* width: 90%; */
+    box-sizing: border-box;
+    position: relative;
+    padding: 1.5rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 0.625rem;
+    background-color: #efefef;
+    margin: 1rem 0;
+}
+
+.leg_item_row{
+    background-color: #efefef;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+    align-items: flex-end;
+    flex-wrap: wrap;
+}
+
+.number{
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    flex-direction: row;
+    margin-right: 0.5rem;
+
+}
+
+.leg_input{
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: row;
+    /* margin-right: 0.5rem; */
+}
+
+.leg_delete_btn{
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    right: -12px;
+    cursor: pointer;
+    margin: 0;
+    top: -12px;
+    border-radius: 12px;
+}
+
+.leg_copy_btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    border: none;
+    outline: none;
+    border-radius: 50%;
+    top: 20px;
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    right: -12px;
+    cursor: pointer;
+}
+
+.leg-item_row>div {
+    margin-top: 0.5rem;
+    margin-right: 0.5rem;
+}
+
+.momentum_container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 73.5px;
+    gap: 5px;
+}
+.checkbox_container{
+    display: flex;
+    flex-direction: row;
+    /* justify-content: space-between; */
+    /* width: 9.5rem; */
+}
+.checkbox_input{
+    /* display: none; */
+    background-color: initial;
+    cursor: default;
+    appearance: auto;
+    box-sizing: border-box;
+    margin: 3px 3px 3px 4px;
+    padding: initial;
+    border: initial;
+}
+
+.container{
+    width:8rem
+}
+
+.leg_input :not(:last-child) {
+    margin-right: 0.25rem;
+}
+
+/* .leg_input label{
+    color: black;
+    margin-bottom: 8px;
+    align-self: flex-start;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 13px;
+    line-height: 14px;
+    
+
+} */
+
+.checkbox_label{
+    white-space: nowrap;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 13px;
+    line-height: 14px;
+    color: #3f3f3f;
+    display: inline-flex;
+    align-items: center;
+    margin-left: 0.3rem;
+}
+
+/* .checkbox_checkmark{
+    display: inline-block;
+    position: relative;
+    width: 8px;
+    height: 8px;
+    margin-right: 8px;
+    border: 1px solid #c7c7c7;
+    border-radius: 2px;
+    box-sizing: content-box;
+    transition: all .2s ease;
+} */
+
+/* .checkbox_checkmark::after{
+    content: "";
+    position: absolute;
+    visibility: hidden;
+    top: -0.8px;
+    left: 2.4px;
+    box-sizing: content-box;
+    width: 3px;
+    height: 6px;
+    border: solid #fff;
+    border-width: 0 1px 1px 0;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+} */
+
+.checkbox_input:checked+label{
+    visibility: visible;
+}
+
+
+.momentum_input_container{
+    display: flex;
+    align-items: center;
+    margin-top: 8px;
+    gap: 0.125rem;
+}
+
+.select_select_container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 6.5rem;
+    /* margin-right: 0; */
+}
+
+.optional_container{
+    display: flex;
+    flex-direction: column;
+    height: 73.5px;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+@media (max-width: 900px){
+.momentum_container{
+    /* align-items: center; */
+    height: auto;
+}
+.momentum_input_container{
+    margin-right: 0!important;
+}
+.optional_container{
+    align-items: center;
+    height: auto;
+}
+}
+
+
+
+/* .leg_input div:first-child {
+    display: flex;
+    flex-direction: column;
+} */
+
