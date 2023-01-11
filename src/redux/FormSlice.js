@@ -4,26 +4,26 @@ import constants from "../constants/Constants";
 
 const initialState={
     futures:false,
-    momentum:{opacity:'0.3',pointerEvents:'none'},
-    trail_Sl:{opacity:'0.3',pointerEvents:'none'},
+    momentum:constants.OPACITY_0,
+    trail_Sl:constants.OPACITY_0,
     leg_data:[],
     Form_data:{
-    total_lot: '1',
-    position:constants.POSITION.DATA[1],
-    option_type:constants.FORM_DATA[0].DATA[0],
-    expiry:constants.FORM_DATA[1].DATA[0],
-    criteria:constants.STRIKE_CRITERIA.DATA[0],
-    strike_type:constants.STRIKE_TYPE.DATA[0],
-    lower_range:'50',
-    upper_range:'100',
-    premium_data:'50',
-    straddle_data:constants.STRADDLE_INPUTS.INPUTS[0],
-    straddle_input:'0.5',
-    momentum_dropdown:constants.SIMPLE_MOMENTUM_DATA[0],
-    momentum_input:'0',
-    trail_Sl_dropdown:constants.TRAIL_SL_DATA[0],
-    trail_Sl_input:'0',
-    trail_Sl_input_2:'0',
+        Lots: '1',
+        PostionType:constants.POSITION.DATA[1],
+        OptionType:constants.FORM_DATA[0].DATA[0],
+        ExpiryKind:constants.FORM_DATA[1].DATA[0],
+        EntryType:constants.STRIKE_CRITERIA.DATA[0],
+        StrikeParameter:constants.STRIKE_TYPE.DATA[0],
+        LowerRange:'50',
+        UpperRange:'100',
+        PremiumParameter:'50',
+        StraddleParameter:constants.STRADDLE_INPUTS.INPUTS[0],
+        StraddleValue:'0.5',
+        MomentumType:constants.SIMPLE_MOMENTUM_DATA[0],
+        MomentumValue:'0',
+        Trail_SLType:constants.TRAIL_SL_DATA[0],
+        Trail_SLValue:'0',
+        Trail_SLValue2:'0',
 },
     Booleans:{
     strike:true,
@@ -49,10 +49,10 @@ const FormSlice=createSlice({
             const check=action.payload.check;
             const item=state.leg_data.find(item=>item.id===id);
             if(check){
-             item.momentum={opacity:'1',pointerEvents:'all'}
+             item.momentum=constants.OPACITY_10
             }
             else if(!check){
-                item.momentum={opacity:'0.3',pointerEvents:'none'}
+                item.momentum=constants.OPACITY_0
                 }
         },
         validatetrail_Sl(state,action){
@@ -60,10 +60,10 @@ const FormSlice=createSlice({
             const check=action.payload.check;
             const item=state.leg_data.find(item=>item.id===id);
             if(check){
-             item.trail_Sl={opacity:'1',pointerEvents:'all'}
+             item.trail_Sl=constants.OPACITY_10
             }
             else if(!check){
-                item.trail_Sl={opacity:'0.3',pointerEvents:'none'}
+                item.trail_Sl=constants.OPACITY_0
                 }
         },
         AddLeg(state){
@@ -80,6 +80,7 @@ const FormSlice=createSlice({
                 obj=JSON.parse(JSON.stringify({...state,id:1}))
                 delete obj.leg_data;
                 delete obj.FetchedLegs;
+                console.log(constants.NEWNAMES)
                 state.leg_data.push(obj)
             }
         },
@@ -168,7 +169,16 @@ const FormSlice=createSlice({
         getFetchedLegs(state,action){
             const data=action.payload;
             for(let key in data){
-                const item=data[key][0].Form_data
+                const item=data[key][0].Form_data        
+                if( data[key][0].momentum.opacity===constants.OPACITY_0.opacity){
+                    item.MomentumType='None';
+                    delete item.MomentumValue
+                }
+                if( data[key][0].trail_Sl.opacity===constants.OPACITY_0.opacity){
+                    item.Trail_SLType='None';
+                    delete item.Trail_SLValue;
+                    delete item.Trail_SLValue2
+                }
                 state.FetchedLegs.data.push(item)
             }
         },

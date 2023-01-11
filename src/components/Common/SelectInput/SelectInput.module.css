@@ -152,3 +152,16 @@
     width: auto;
 }
 }
+
+@media (max-width:480px){
+    .select_input{
+        width: 5rem;
+    }
+}
+
+@media (max-width:300px){
+    .select_input{
+        width: 4rem;
+        font-size: 0.6rem;
+    }
+}

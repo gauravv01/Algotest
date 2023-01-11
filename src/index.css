@@ -1,7 +1,8 @@
 *{
   box-sizing: border-box;
   box-sizing: border-box;
-  text-align: center;
+  /* text-align: center;x` */
+  
 }
 
 body {
@@ -11,7 +12,14 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #f6f6f6
+  background-color: #f6f6f6;
+
+}
+
+body #root{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 code {

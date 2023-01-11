@@ -47,6 +47,8 @@ SIMPLE_MOMENTUM: 'Simple Momentum',
 SIMPLE_MOMENTUM_DATA:['PointsUp','PointsDown','PercentageUp','PercentageDown','Underlying PointsUp','Underlying PointsDown','Underlying PercentageUp','Underlying PercentageDown'],
 TRAIL_SL:'Trail SL',
 TRAIL_SL_DATA:['Points','Percentage'],
+OPACITY_0:{opacity:'0.3',pointerEvents:'none'},
+OPACITY_10:{opacity:'1',pointerEvents:'all'},
 
 // Submit
 SUBMIT:'Submit',
@@ -60,8 +62,9 @@ DATA_PAGE:'/retrieved',
 
     // Loading
     
-LOADING:'Loading...'
-    
+LOADING:'Loading...',
+   
+
    
    
    

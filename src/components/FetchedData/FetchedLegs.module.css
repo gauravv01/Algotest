@@ -1,6 +1,4 @@
-.list{
-    /* list-style: none; */
-}
+
 
 .table{
    border: 1px solid gray; 
@@ -13,6 +11,15 @@
 /* .table tr{
     border: 1px solid gray;
 } */
+
+.table tr{
+    text-align: center;
+}
+
+.table tr th{
+    display: flex;
+    justify-content: center;
+}
 
 .table tr td{
     border: 1px solid gray;
