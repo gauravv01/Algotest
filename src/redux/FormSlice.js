@@ -110,7 +110,7 @@ const FormSlice=createSlice({
         }, 
         validateInput(state){
             if (state.Form_data.EntryType===constants.STRIKE_CRITERIA.DATA[0]){
-                state.Booleans=false;
+                state.Booleans.closest=false;
                 state.Booleans.premium=false;
                state.Booleans.straddle=false;
                 state.Booleans.strike= true
