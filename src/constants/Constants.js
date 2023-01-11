@@ -52,7 +52,7 @@ OPACITY_10:{opacity:'1',pointerEvents:'all'},
 
 // Submit
 SUBMIT:'Submit',
-FETCH:'Fetch',
+FETCH:'Fetch All Data',
 ADD_LEGS:'+ Add legs',
 
 //  Pages

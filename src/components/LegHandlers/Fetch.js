@@ -15,7 +15,7 @@ function Fetch() {
    
   return (
     <>
-    <Link to={constants.DATA_PAGE}><Button className={styles.button} onClick={getData}>{constants.FETCH}</Button></Link>
+    <Link to={constants.DATA_PAGE}><Button className={styles.fetch} onClick={getData}>{constants.FETCH}</Button></Link>
     </>
   )
 }

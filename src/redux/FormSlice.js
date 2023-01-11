@@ -109,25 +109,25 @@ const FormSlice=createSlice({
             item.Form_data={...item.Form_data,[key]:input}
         }, 
         validateInput(state){
-            if (state.Form_data.criteria===constants.STRIKE_CRITERIA.DATA[0]){
-                state.Booleans.closest=false;
+            if (state.Form_data.EntryType===constants.STRIKE_CRITERIA.DATA[0]){
+                state.Booleans=false;
                 state.Booleans.premium=false;
                state.Booleans.straddle=false;
                 state.Booleans.strike= true
             }
-            else if(state.Form_data.criteria===constants.STRIKE_CRITERIA.DATA[1]){
+            else if(state.Form_data.EntryType===constants.STRIKE_CRITERIA.DATA[1]){
                 state.Booleans.strike=false;
                 state.Booleans.closest=false;
                state.Booleans.straddle=false;
                 state.Booleans.premium=true;
             }
-            else if(state.Form_data.criteria===constants.STRIKE_CRITERIA.DATA[2]){
+            else if(state.Form_data.EntryType===constants.STRIKE_CRITERIA.DATA[2]){
                 state.Booleans.strike=false;
                 state.Booleans.straddle=false;
                state.Booleans.premium=false;
                 state.Booleans.closest=true;
             }
-            else if(state.Form_data.criteria===constants.STRIKE_CRITERIA.DATA[3]){
+            else if(state.Form_data.EntryType===constants.STRIKE_CRITERIA.DATA[3]){
                 state.Booleans.closest=false;
                 state.Booleans.premium=false;
                 state.Booleans.strike=false;
@@ -137,25 +137,25 @@ const FormSlice=createSlice({
         validateLegInput(state,action){
             const id=action.payload.id;
             const item=state.leg_data.find(item=>item.id===id);
-            if (item.Form_data.criteria===constants.STRIKE_CRITERIA.DATA[0]){
+            if (item.Form_data.EntryType===constants.STRIKE_CRITERIA.DATA[0]){
                 item.Booleans.closest=false;
                 item.Booleans.premium=false;
                 item.Booleans.straddle=false;
                 item.Booleans.strike= true
             }
-            else if(item.Form_data.criteria===constants.STRIKE_CRITERIA.DATA[1]){
+            else if(item.Form_data.EntryType===constants.STRIKE_CRITERIA.DATA[1]){
                 item.Booleans.strike=false;
                 item.Booleans.closest=false;
                 item.Booleans.straddle=false;
                 item.Booleans.premium=true;
             }
-            else if(item.Form_data.criteria===constants.STRIKE_CRITERIA.DATA[2]){
+            else if(item.Form_data.EntryType===constants.STRIKE_CRITERIA.DATA[2]){
                 item.Booleans.strike=false;
                 item.Booleans.straddle=false;
                 item.Booleans.premium=false;
                 item.Booleans.closest=true;
             }
-            else if(item.Form_data.criteria===constants.STRIKE_CRITERIA.DATA[3]){
+            else if(item.Form_data.EntryType===constants.STRIKE_CRITERIA.DATA[3]){
                 item.Booleans.closest=false;
                 item.Booleans.premium=false;
                 item.Booleans.strike=false;
@@ -167,19 +167,24 @@ const FormSlice=createSlice({
             state.leg_data=[]
         },
         getFetchedLegs(state,action){
+            state.FetchedLegs.data=[];
             const data=action.payload;
             for(let key in data){
-                const item=data[key][0].Form_data        
-                if( data[key][0].momentum.opacity===constants.OPACITY_0.opacity){
+                let i=0;
+                while(i<data[key].length){
+                const item=data[key][i].Form_data        
+                if( data[key][i].momentum.opacity===constants.OPACITY_0.opacity){
                     item.MomentumType='None';
                     delete item.MomentumValue
                 }
-                if( data[key][0].trail_Sl.opacity===constants.OPACITY_0.opacity){
+                if( data[key][i].trail_Sl.opacity===constants.OPACITY_0.opacity){
                     item.Trail_SLType='None';
                     delete item.Trail_SLValue;
                     delete item.Trail_SLValue2
                 }
                 state.FetchedLegs.data.push(item)
+                i++;
+            }
             }
         },
         dataPosted(state){

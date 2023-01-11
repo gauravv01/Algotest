@@ -18,6 +18,30 @@
 
 }
 
+.fetch{
+    min-width: 129px;
+    height: 28px;
+    border-radius: 17.5px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 14px;
+    text-align: center;
+    cursor: pointer;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+    padding: 0 1rem;
+    background: #375a9e;
+    border: 1px solid #efefef;
+    color:  #fff;
+    /* margin-top: 1.5rem; */
+    position: absolute;
+    right: 3rem;
+    /* bottom: 1.5rem; */
+
+}
+
 .add_legs{
     min-width: 129px;
     height: 28px;
