@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { validation , entryType , setForm , addLeg} from "./functions";
 import constants from "../constants/Constants";
-
 
 const initialState={
     futures:false,
@@ -68,19 +68,17 @@ const FormSlice=createSlice({
         },
         AddLeg(state){
             if(state.leg_data.length){
-                const key= state.leg_data[state.leg_data.length-1].id +1;
                 let obj={};
-                obj=JSON.parse(JSON.stringify({...state,id:key}))
+                addLeg(state,obj,state)
                 delete obj.leg_data;
                 delete obj.FetchedLegs;
-                 state.leg_data.push(obj)
+                 
             }
             else if(!state.leg_data.length){
                 let obj={};
                 obj=JSON.parse(JSON.stringify({...state,id:1}))
                 delete obj.leg_data;
                 delete obj.FetchedLegs;
-                console.log(constants.NEWNAMES)
                 state.leg_data.push(obj)
             }
         },
@@ -91,76 +89,24 @@ const FormSlice=createSlice({
             CopyLeg(state,action){
                 const id=action.payload;
                 const leg= state.leg_data.find(item=>item.id===id);
-                const key= state.leg_data[state.leg_data.length-1].id +1;
                 let obj={};
-                obj=JSON.parse(JSON.stringify({...leg,id:key}))
-                state.leg_data.push(obj)
+                addLeg(state,obj,leg)
             },
        setFormInput(state,action){
-            const input=action.payload.value;
-            const key=action.payload.id;
-            state.Form_data={...state.Form_data,[key]:input}
+           setForm(action,state);
         },
         setLegInput(state,action){
-            const input=action.payload.value;
-            const key=action.payload.key;
             const id=action.payload.id;
             const item=state.leg_data.find(item=>item.id===id);
-            item.Form_data={...item.Form_data,[key]:input}
+            setForm(action,item);
         }, 
         validateInput(state){
-            if (state.Form_data.EntryType===constants.STRIKE_CRITERIA.DATA[0]){
-                state.Booleans.closest=false;
-                state.Booleans.premium=false;
-               state.Booleans.straddle=false;
-                state.Booleans.strike= true
-            }
-            else if(state.Form_data.EntryType===constants.STRIKE_CRITERIA.DATA[1]){
-                state.Booleans.strike=false;
-                state.Booleans.closest=false;
-               state.Booleans.straddle=false;
-                state.Booleans.premium=true;
-            }
-            else if(state.Form_data.EntryType===constants.STRIKE_CRITERIA.DATA[2]){
-                state.Booleans.strike=false;
-                state.Booleans.straddle=false;
-               state.Booleans.premium=false;
-                state.Booleans.closest=true;
-            }
-            else if(state.Form_data.EntryType===constants.STRIKE_CRITERIA.DATA[3]){
-                state.Booleans.closest=false;
-                state.Booleans.premium=false;
-                state.Booleans.strike=false;
-                state.Booleans.straddle=true;
-            }
+           validation(state);
         }, 
         validateLegInput(state,action){
             const id=action.payload.id;
             const item=state.leg_data.find(item=>item.id===id);
-            if (item.Form_data.EntryType===constants.STRIKE_CRITERIA.DATA[0]){
-                item.Booleans.closest=false;
-                item.Booleans.premium=false;
-                item.Booleans.straddle=false;
-                item.Booleans.strike= true
-            }
-            else if(item.Form_data.EntryType===constants.STRIKE_CRITERIA.DATA[1]){
-                item.Booleans.strike=false;
-                item.Booleans.closest=false;
-                item.Booleans.straddle=false;
-                item.Booleans.premium=true;
-            }
-            else if(item.Form_data.EntryType===constants.STRIKE_CRITERIA.DATA[2]){
-                item.Booleans.strike=false;
-                item.Booleans.straddle=false;
-                item.Booleans.premium=false;
-                item.Booleans.closest=true;
-            }
-            else if(item.Form_data.EntryType===constants.STRIKE_CRITERIA.DATA[3]){
-                item.Booleans.closest=false;
-                item.Booleans.premium=false;
-                item.Booleans.strike=false;
-                item.Booleans.straddle=true;
-            }
+          validation(item)
         },
         clearLegs(state){
             // state.leg_data=state.leg_data.splice(0,state.leg_data.length)
@@ -182,6 +128,7 @@ const FormSlice=createSlice({
                     delete item.Trail_SLValue;
                     delete item.Trail_SLValue2
                 }
+                entryType(data[key][i].Booleans,item);
                 state.FetchedLegs.data.push(item)
                 i++;
             }

@@ -5,12 +5,12 @@ import { FormActions } from '../../redux/FormSlice';
 import styles from './LegForm.module.css';
 import constants from '../../constants/Constants';
 
-function Legform({className,valid,label,lots_label,value}) {
+function Legform({label}) {
     const dispatch=useDispatch();
     const data=useSelector(state=>state.FormDataSlice);
    
      const handleChange=(e)=>{
-     dispatch(FormActions.setFormInput({id:e.target.name,value:e.target.value}))
+     dispatch(FormActions.setFormInput({key:e.target.name,value:e.target.value}))
        }
        const changeStrike=(e)=>{
         handleChange(e);
