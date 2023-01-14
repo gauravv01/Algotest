@@ -40,26 +40,26 @@ export function validation(state){
     }
 }
 
-export function entryType(data,item){
-    if(data.strike){
+export function entryType(item){
+    if(item.EntryType===constants.STRIKE_CRITERIA.DATA[0]){
       delete item.LowerRange;
       delete item.UpperRange
       delete item.PremiumParameter;
       delete item.StraddleParameter;
       delete item.StraddleValue
     }
-    else if(data.premium){
+    else if(item.EntryType===constants.STRIKE_CRITERIA.DATA[1]){
         delete item.StrikeParameter;
         delete item.PremiumParameter;
         delete item.StraddleParameter;
         delete item.StraddleValue
-    }else if(item.closest){
+    }else if(item.EntryType===constants.STRIKE_CRITERIA.DATA[2]){
         delete item.StrikeParameter;
         delete item.LowerRange;
         delete item.UpperRange;
         delete item.StraddleParameter;
         delete item.StraddleValue
-    } else if(item.straddle){
+    } else if(item.EntryType===constants.STRIKE_CRITERIA.DATA[3]){
         delete item.StrikeParameter;
         delete item.LowerRange;
         delete item.UpperRange;

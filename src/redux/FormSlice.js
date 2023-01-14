@@ -128,7 +128,7 @@ const FormSlice=createSlice({
                     delete item.Trail_SLValue;
                     delete item.Trail_SLValue2
                 }
-                entryType(data[key][i].Booleans,item);
+                entryType(item);
                 state.FetchedLegs.data.push(item)
                 i++;
             }
